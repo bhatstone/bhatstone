@@ -1,0 +1,83 @@
+/* Base Refinements */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0c0c0c; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #444; 
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #FF8C00; 
+}
+
+/* Noise Texture Overlay Class */
+.bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none;
+}
+
+/* Text Reveal Animation Utility */
+.reveal-text {
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 1s ease-out;
+}
+
+.reveal-text.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Mobile Menu Transition */
+#mobile-menu {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-link {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease-out;
+}
+
+#mobile-menu.open .mobile-link {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#mobile-menu.open .mobile-link:nth-child(1) { transition-delay: 0.1s; }
+#mobile-menu.open .mobile-link:nth-child(2) { transition-delay: 0.2s; }
+#mobile-menu.open .mobile-link:nth-child(3) { transition-delay: 0.3s; }
+#mobile-menu.open .mobile-link:nth-child(4) { transition-delay: 0.4s; }
+
+/* Parallax Hero Image */
+#hero-bg {
+    transition: transform 0.1s linear;
+}
+
+/* Form Focus Effects */
+input:focus, textarea:focus {
+    box-shadow: 0 0 0 1px #FF8C00;
+}
+
+/* Card Hover Glow */
+.group:hover .lucide {
+    filter: drop-shadow(0 0 8px rgba(255,140,0,0.5));
+}
+
+

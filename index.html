@@ -1,0 +1,700 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+  
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Bhat Stone Crusher | Stone & Aggregate Supplier in Jammu & Kashmir
+    </title>
+    <meta
+      name="description"
+      content="Premium quality crushed stone, construction aggregates, and bulk material supply in Jammu & Kashmir. Reliable, durable, and trusted."
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700;800&family=Oswald:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              stone: {
+                900: "#0c0c0c",
+                800: "#1c1c1c",
+                700: "#2a2a2a",
+                600: "#444444",
+                500: "#666666",
+              },
+              accent: {
+                DEFAULT: "#FF8C00", // Construction Orange
+                hover: "#e07b00",
+                gold: "#C5A059",
+              },
+            },
+            fontFamily: {
+              sans: ["Manrope", "sans-serif"],
+              display: ["Oswald", "sans-serif"],
+            },
+            backgroundImage: {
+              noise:
+                "url('https://cdnjs.cloudflare.com/ajax/libs/simple-noise/1.0.0/simple-noise.min.js')", // Placeholder for noise effect via CSS
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./style.css" />
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  
+    
+  <body
+    class="bg-stone-900 text-white overflow-x-hidden antialiased selection:bg-accent selection:text-white"
+  >
+    <!-- Navigation -->
+    <nav
+      class="fixed w-full z-50 top-0 transition-all duration-300"
+      id="navbar"
+    >
+      <div
+        class="absolute inset-0 bg-stone-900/80 backdrop-blur-md border-b border-white/5"
+      ></div>
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 relative flex justify-between items-center"
+      >
+        <a
+          href="#"
+          class="text-2xl font-display font-bold tracking-wider uppercase text-white flex items-center gap-2"
+        >
+          <i data-lucide="gem" class="text-accent w-6 h-6"></i>
+          Bhat <span class="text-stone-500">Crusher</span>
+        </a>
+
+        <div
+          class="hidden md:flex gap-8 items-center font-medium text-sm tracking-wide text-stone-300"
+        >
+          <a href="#about" class="hover:text-accent transition-colors">About</a>
+          <a href="#services" class="hover:text-accent transition-colors"
+            >Services</a
+          >
+          <a href="#why-us" class="hover:text-accent transition-colors"
+            >Why Us</a
+          >
+          <a
+            href="#contact"
+            class="px-5 py-2.5 bg-white/5 border border-white/10 rounded hover:bg-accent hover:border-accent hover:text-white transition-all"
+          >
+            Get a Quote
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden text-white" id="mobile-menu-btn">
+          <i data-lucide="menu" class="w-8 h-8"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Menu Overlay -->
+      <div
+        class="fixed inset-0 bg-stone-950 z-40 transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-center items-center gap-8"
+        id="mobile-menu"
+      >
+        <button class="absolute top-6 right-6 text-white" id="close-menu-btn">
+          <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+        <a href="#about" class="text-2xl font-display uppercase mobile-link"
+          >About</a
+        >
+        <a href="#services" class="text-2xl font-display uppercase mobile-link"
+          >Services</a
+        >
+        <a href="#why-us" class="text-2xl font-display uppercase mobile-link"
+          >Why Us</a
+        >
+        <a
+          href="#contact"
+          class="text-2xl font-display uppercase text-accent mobile-link"
+          >Contact</a
+        >
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      class="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden"
+    >
+      <!-- Background Image with Parallax -->
+      <div class="absolute inset-0 z-0">
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-stone-900 via-stone-900/60 to-transparent z-10"
+        ></div>
+        <div class="absolute inset-0 bg-stone-900/40 z-10"></div>
+        <img
+          src="https://images.unsplash.com/photo-1599818820645-127e4e101f3f?q=80&w=2070&auto=format&fit=crop"
+          alt="Stone Quarry"
+          class="w-full h-full object-cover object-center scale-110"
+          id="hero-bg"
+        />
+      </div>
+
+      <!-- 3D/Particle Effect Container -->
+      <div
+        id="canvas-container"
+        class="absolute inset-0 z-10 pointer-events-none opacity-60"
+      ></div>
+
+      <!-- Content -->
+      <div
+        class="relative z-20 max-w-7xl mx-auto px-6 text-center md:text-left w-full mt-20"
+      >
+        <div class="overflow-hidden mb-2">
+          <h2
+            class="text-accent font-bold tracking-[0.2em] uppercase text-sm md:text-base reveal-text"
+          >
+            Est. Rakh Shalina, J&K
+          </h2>
+        </div>
+        <div class="overflow-hidden mb-6">
+          <h1
+            class="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white uppercase leading-none reveal-text"
+          >
+            Strength Built <br />
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-stone-400 to-stone-600"
+              >On Stone</span
+            >
+          </h1>
+        </div>
+        <div class="overflow-hidden mb-10 max-w-xl">
+          <p class="text-stone-300 text-lg md:text-xl font-light reveal-text">
+            Premium quality aggregates and crushing services. Building the
+            foundation of Jammu & Kashmir's infrastructure with reliability and
+            precision.
+          </p>
+        </div>
+
+        <div
+          class="flex flex-col md:flex-row gap-4 justify-center md:justify-start reveal-text opacity-0"
+          id="hero-cta"
+        >
+          <a
+            href="tel:+917780848336"
+            class="group relative px-8 py-4 bg-accent text-white font-bold tracking-wider uppercase overflow-hidden hover:shadow-[0_0_20px_rgba(255,140,0,0.4)] transition-all"
+          >
+            <span class="relative z-10 flex items-center gap-2">
+              Call Now <i data-lucide="phone-call" class="w-4 h-4"></i>
+            </span>
+            <div
+              class="absolute inset-0 bg-white transform -translate-x-full skew-x-12 group-hover:translate-x-full transition-transform duration-500 opacity-20"
+            ></div>
+          </a>
+          <a
+            href="#contact"
+            class="px-8 py-4 border border-white/20 hover:bg-white/5 text-white font-medium tracking-wider uppercase transition-all backdrop-blur-sm"
+          >
+            Get a Quote
+          </a>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div
+        class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 animate-bounce"
+      >
+        <i data-lucide="chevron-down" class="text-stone-400 w-8 h-8"></i>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-stone-900 relative">
+      <div
+        class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-stone-800/20 to-transparent pointer-events-none"
+      ></div>
+      <div
+        class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center"
+      >
+        <div class="relative group">
+          <div
+            class="absolute -inset-4 border-2 border-stone-800 opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-95 group-hover:scale-100"
+          ></div>
+          <img
+            src="./Siteimage.jpeg"
+            alt="Stone Crushing Machinery"
+            class="w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-700 shadow-2xl relative z-10"
+          />
+          <div
+            class="absolute -bottom-6 -right-6 w-32 h-32 bg-stone-800 p-4 flex items-center justify-center z-20 border border-stone-700"
+          >
+            <i data-lucide="hard-hat" class="w-12 h-12 text-accent"></i>
+          </div>
+        </div>
+
+        <div class="reveal-on-scroll">
+          <h3
+            class="text-accent font-bold tracking-widest uppercase text-sm mb-4"
+          >
+            Who We Are
+          </h3>
+          <h2
+            class="text-4xl md:text-5xl font-display font-bold text-white mb-8 uppercase"
+          >
+            Trusted Supplier of <br />High-Quality Aggregates
+          </h2>
+          <div class="space-y-6 text-stone-400 text-lg">
+            <p>
+              Bhat Stone Crusher is a premier supplier of crushed stone and
+              aggregates located in the industrial heart of
+              <span class="text-white font-medium">Rakh Shalina, Srinagar</span
+              >.
+            </p>
+            <p>
+              We are committed to delivering durable materials for
+              infrastructure, residential, and commercial construction projects.
+              Our facility utilizes advanced crushing technology to ensure
+              uniform size and superior quality in every load.
+            </p>
+          </div>
+
+          <div
+            class="mt-10 grid grid-cols-2 gap-8 border-t border-stone-800 pt-8"
+          >
+            <div>
+              <h4 class="text-3xl font-display font-bold text-white mb-1">
+                100%
+              </h4>
+              <p class="text-stone-500 text-sm uppercase tracking-wide">
+                Quality Assured
+              </p>
+            </div>
+            <div>
+              <h4 class="text-3xl font-display font-bold text-white mb-1">
+                J&K
+              </h4>
+              <p class="text-stone-500 text-sm uppercase tracking-wide">
+                Locally Operated
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-stone-950 relative overflow-hidden">
+      <!-- Texture overlay -->
+      <div
+        class="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/black-felt.png')]"
+      ></div>
+
+      <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="text-center mb-16 reveal-on-scroll">
+          <h3
+            class="text-accent font-bold tracking-widest uppercase text-sm mb-4"
+          >
+            Our Expertise
+          </h3>
+          <h2
+            class="text-4xl md:text-5xl font-display font-bold text-white uppercase"
+          >
+            Premium Services
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Service 1 -->
+          <div
+            class="group p-8 bg-stone-900 border border-stone-800 hover:border-accent/50 transition-all duration-300 hover:-translate-y-2 reveal-on-scroll"
+          >
+            <div
+              class="w-14 h-14 bg-stone-800 rounded flex items-center justify-center mb-6 text-white group-hover:bg-accent group-hover:text-stone-900 transition-colors"
+            >
+              <i data-lucide="mountain-snow" class="w-8 h-8"></i>
+            </div>
+            <h3
+              class="text-xl font-display font-bold text-white mb-4 uppercase"
+            >
+              Crushed Stone
+            </h3>
+            <p class="text-stone-400 text-sm leading-relaxed">
+              High-grade crushed stone in various sizes suited for road base,
+              concrete mix, and drainage systems.
+            </p>
+          </div>
+
+          <!-- Service 2 -->
+          <div
+            class="group p-8 bg-stone-900 border border-stone-800 hover:border-accent/50 transition-all duration-300 hover:-translate-y-2 reveal-on-scroll"
+            style="transition-delay: 100ms"
+          >
+            <div
+              class="w-14 h-14 bg-stone-800 rounded flex items-center justify-center mb-6 text-white group-hover:bg-accent group-hover:text-stone-900 transition-colors"
+            >
+              <img
+                class="w-7 h-7 invert group-hover:invert-0 transition duration-300"
+                src="./rock.png"
+                alt=""
+              />
+            </div>
+            <h3
+              class="text-xl font-display font-bold text-white mb-4 uppercase"
+            >
+              Construction Aggregates
+            </h3>
+            <p class="text-stone-400 text-sm leading-relaxed">
+              Premium aggregates essential for strengthening asphalt and
+              concrete structures.
+            </p>
+          </div>
+
+          <!-- Service 3 -->
+          <div
+            class="group p-8 bg-stone-900 border border-stone-800 hover:border-accent/50 transition-all duration-300 hover:-translate-y-2 reveal-on-scroll"
+            style="transition-delay: 200ms"
+          >
+            <div
+              class="w-14 h-14 bg-stone-800 rounded flex items-center justify-center mb-6 text-white group-hover:bg-accent group-hover:text-stone-900 transition-colors"
+            >
+              <i data-lucide="truck" class="w-8 h-8"></i>
+            </div>
+            <h3
+              class="text-xl font-display font-bold text-white mb-4 uppercase"
+            >
+              Bulk Supply
+            </h3>
+            <p class="text-stone-400 text-sm leading-relaxed">
+              Capable of handling large-scale orders for major infrastructure
+              projects with consistent quality.
+            </p>
+          </div>
+
+          <!-- Service 4 -->
+          <div
+            class="group p-8 bg-stone-900 border border-stone-800 hover:border-accent/50 transition-all duration-300 hover:-translate-y-2 reveal-on-scroll"
+            style="transition-delay: 300ms"
+          >
+            <div
+              class="w-14 h-14 bg-stone-800 rounded flex items-center justify-center mb-6 text-white group-hover:bg-accent group-hover:text-stone-900 transition-colors"
+            >
+              <i data-lucide="clock" class="w-8 h-8"></i>
+            </div>
+            <h3
+              class="text-xl font-display font-bold text-white mb-4 uppercase"
+            >
+              On-Time Delivery
+            </h3>
+            <p class="text-stone-400 text-sm leading-relaxed">
+              Reliable logistics network ensuring your materials arrive on site,
+              exactly when you need them.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="why-us" class="py-24 bg-stone-900 border-y border-white/5">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-5 reveal-on-scroll">
+            <h3
+              class="text-accent font-bold tracking-widest uppercase text-sm mb-4"
+            >
+              Why Choose Us
+            </h3>
+            <h2
+              class="text-4xl md:text-5xl font-display font-bold text-white mb-6 uppercase"
+            >
+              The Solid Choice <br />For Your Project
+            </h2>
+            <p class="text-stone-400 mb-8">
+              We don't just supply stone; we supply the foundation for success.
+              Our reputation in Jammu & Kashmir is built on transparency,
+              quality, and prompt service.
+            </p>
+            <ul class="space-y-4">
+              <li class="flex items-center gap-4">
+                <i data-lucide="check-circle-2" class="text-accent w-6 h-6"></i>
+                <span class="text-stone-200 font-medium"
+                  >Uncompromising Material Quality</span
+                >
+              </li>
+              <li class="flex items-center gap-4">
+                <i data-lucide="check-circle-2" class="text-accent w-6 h-6"></i>
+                <span class="text-stone-200 font-medium"
+                  >Competitive Industry Pricing</span
+                >
+              </li>
+              <li class="flex items-center gap-4">
+                <i data-lucide="check-circle-2" class="text-accent w-6 h-6"></i>
+                <span class="text-stone-200 font-medium"
+                  >Experienced Local Expertise</span
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="lg:col-span-7 grid md:grid-cols-2 gap-4 reveal-on-scroll">
+            <div class="bg-stone-800 p-8 rounded-lg border-l-4 border-accent">
+              <h4 class="text-2xl font-display font-bold text-white mb-2">
+                Reliable Supply
+              </h4>
+              <p class="text-stone-400 text-sm">
+                Consistent stock levels to keep your project moving without
+                delays.
+              </p>
+            </div>
+            <div
+              class="bg-stone-800 p-8 rounded-lg border-l-4 border-stone-600"
+            >
+              <h4 class="text-2xl font-display font-bold text-white mb-2">
+                Customer First
+              </h4>
+              <p class="text-stone-400 text-sm">
+                Dedicated support team available to assist with quotes and
+                logistics.
+              </p>
+            </div>
+            <div
+              class="bg-stone-800 p-8 rounded-lg border-l-4 border-stone-600"
+            >
+              <h4 class="text-2xl font-display font-bold text-white mb-2">
+                Modern Tech
+              </h4>
+              <p class="text-stone-400 text-sm">
+                Advanced crushing machinery ensuring specific grain sizes.
+              </p>
+            </div>
+            <div class="bg-stone-800 p-8 rounded-lg border-l-4 border-accent">
+              <h4 class="text-2xl font-display font-bold text-white mb-2">
+                Eco Conscious
+              </h4>
+              <p class="text-stone-400 text-sm">
+                Responsible mining and processing practices.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-stone-950 relative">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-16">
+          <!-- Contact Info -->
+          <div class="reveal-on-scroll">
+            <h3
+              class="text-accent font-bold tracking-widest uppercase text-sm mb-4"
+            >
+              Get In Touch
+            </h3>
+            <h2
+              class="text-4xl md:text-5xl font-display font-bold text-white mb-8 uppercase"
+            >
+              Start Your Project
+            </h2>
+            <p class="text-stone-400 mb-10 text-lg">
+              Ready to order or need a consultation? Contact our team today. We
+              deliver excellence across Jammu & Kashmir.
+            </p>
+
+            <div class="space-y-8">
+              <div class="flex items-start gap-6">
+                <div
+                  class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center shrink-0 text-accent"
+                >
+                  <i data-lucide="map-pin" class="w-6 h-6"></i>
+                </div>
+                <div>
+                  <h4
+                    class="text-white font-bold font-display uppercase text-lg"
+                  >
+                    Location
+                  </h4>
+                  <p class="text-stone-400">
+                    Rakh Shalina, Srinagar<br />Jammu and Kashmir – 191101
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-6">
+                <div
+                  class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center shrink-0 text-accent"
+                >
+                  <i data-lucide="phone" class="w-6 h-6"></i>
+                </div>
+                <div>
+                  <h4
+                    class="text-white font-bold font-display uppercase text-lg"
+                  >
+                    Phone
+                  </h4>
+                  <a
+                    href="tel:+917780848336"
+                    class="text-stone-400 hover:text-white transition-colors text-xl font-light"
+                  >
+                    +91 77808 48336
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-12">
+             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.7616762255307!2d74.88156227517578!3d34.02432791920474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38e189001b2a3c15%3A0xe0de6c626a0665a9!2sBhat%20stone%20crusher!5e0!3m2!1sen!2sin!4v1771864443637!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div
+            class="bg-stone-900 p-8 md:p-12 border border-stone-800 reveal-on-scroll"
+          >
+            <form id="contactForm" class="space-y-6">
+              <div>
+                <label
+                  class="block text-stone-500 text-sm font-bold uppercase tracking-wider mb-2"
+                >
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="from_name"
+                  required
+                  class="w-full bg-stone-950 border border-stone-800 text-white p-4 focus:outline-none focus:border-accent transition-colors"
+                  placeholder="Your Name"
+                />
+              </div>
+
+              <div>
+                <label
+                  class="block text-stone-500 text-sm font-bold uppercase tracking-wider mb-2"
+                >
+                  Phone Number
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone_number"
+                  required
+                  class="w-full bg-stone-950 border border-stone-800 text-white p-4 focus:outline-none focus:border-accent transition-colors"
+                  placeholder="+91 XXXXX XXXXX"
+                />
+              </div>
+
+              <div>
+                <label
+                  class="block text-stone-500 text-sm font-bold uppercase tracking-wider mb-2"
+                >
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                  class="w-full bg-stone-950 border border-stone-800 text-white p-4 focus:outline-none focus:border-accent transition-colors"
+                  placeholder="Tell us about your requirements..."
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="w-full py-4 bg-white text-stone-900 font-bold uppercase tracking-widest hover:bg-accent hover:text-white transition-colors"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stone-950 border-t border-white/5 py-12">
+      <div
+        class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6"
+      >
+        <div class="flex items-center gap-2">
+          <i data-lucide="gem" class="text-stone-700 w-5 h-5"></i>
+          <span class="text-stone-500 font-display font-bold uppercase"
+            >Bhat Stone Crusher</span
+          >
+        </div>
+        <p class="text-stone-600 text-sm">
+          &copy; 2024 Bhat Stone Crusher. All Rights Reserved.
+        </p>
+      </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a
+      href="https://wa.me/917780848336"
+      target="_blank"
+      class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform flex items-center justify-center"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        stroke="currentColor"
+        stroke-width="2"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="w-6 h-6"
+      >
+        <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"></path>
+      </svg>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script type="module" src="./stones.js"></script>
+    <script src="./script.js"></script>
+  
+    <script>
+      lucide.createIcons();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <script>
+      emailjs.init("LEWiBwBu8LPKwU_iN");
+
+      const form = document.getElementById("contactForm");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        emailjs
+          .sendForm(
+            "service_qoodiab", // your service id
+            "template_f7vfxc1", // your template id
+            this,
+          )
+          .then(() => {
+            alert("Message sent successfully ✅");
+            form.reset();
+          })
+          .catch((error) => {
+            console.log(error);
+            alert("Something went wrong ❌");
+          });
+      });
+    </script>
+  </body>
+</html>
